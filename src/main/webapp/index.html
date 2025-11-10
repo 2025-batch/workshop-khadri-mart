@@ -5,29 +5,145 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Khadri Mart</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: pink;
+  }
+
+  header {
+    text-align: center;
+    padding: 20px;
+    color: white;
+    background: linear-gradient(to right, #5f9ea0, #4682b4);
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    background-color: #f0f0f0;
+    border-bottom: 2px solid #444;
+    position: relative;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 160px;
+    z-index: 10;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 10px;
+    color: black;
+    text-align: left;
+    text-decoration: none;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  iframe {
+    width: 80%;
+    height: 450px;
+    border: none;
+    display: block;
+    margin: 20px auto;
+  }
+
+  footer {
+    text-align: center;
+    background-color: #4682b4;
+    color: white;
+    padding: 10px;
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>KHADRI MART</h1>
-    </header>
 
-    <nav>
-      <div class="dropdown">
-        <a href="#">VEGETABLES ▾</a>
-        <div class="dropdown-content">
-          <a id="tomoto" href="tomato.html" target="content-frame">Tomato</a>
-          <a id="onion" href="onion.html" target="content-frame">Onion</a>
-          <a id="carrot" href="carrot.html" target="content-frame">Carrot</a>
-        </div>
-      </div>
+<header>
+  <h1>Khadri Mart</h1>
+  <p>Welcome to your fresh vegetable store!</p>
+</header>
 
-      <a href="fruits.html" target="content-frame">FRUITS</a>
-    </nav>
-
-    <section class="content">
-      <iframe name="content-frame" frameborder="0"></iframe>
-    </section>
+<nav>
+  <div class="dropdown">
+    <a href="#">VEGETABLES ▾</a>
+    <div class="dropdown-content">
+      <a href="vegetables.html#tomato" target="content-frame">Tomato</a>
+      <a href="vegetables.html#onion" target="content-frame">Onion</a>
+      <a href="vegetables.html#carrot" target="content-frame">Carrot</a>
+    </div>
   </div>
+
+  <div class="dropdown">
+    <a href="#">FRUITS ▾</a>
+    <div class="dropdown-content">
+      <a href="fruits.html#apple" target="content-frame">Apple</a>
+      <a href="fruits.html#banana" target="content-frame">Banana</a>
+      <a href="fruits.html#mango" target="content-frame">Mango</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <a href="#">CARS ▾</a>
+    <div class="dropdown-content">
+      <a href="cars.html#tesla" target="content-frame">Tesla Model S</a>
+      <a href="cars.html#bmw" target="content-frame">BMW X5</a>
+      <a href="cars.html#audi" target="content-frame">Audi A6</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <a href="#">SNACKS ▾</a>
+    <div class="dropdown-content">
+      <a href="snacks.html#chips" target="content-frame">Potato Chips</a>
+      <a href="snacks.html#samosa" target="content-frame">Samosa</a>
+      <a href="snacks.html#popcorn" target="content-frame">Popcorn</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <a href="#">CLOTHES ▾</a>
+    <div class="dropdown-content">
+      <a href="clothes.html#shirt" target="content-frame">Shirt</a>
+      <a href="clothes.html#jeans" target="content-frame">Jeans</a>
+      <a href="clothes.html#jacket" target="content-frame">Jacket</a>
+    </div>
+  </div>
+
+  <a href="contact.html" target="content-frame">CONTACT</a>
+</nav>
+
+<!-- Iframe for content -->
+<iframe name="content-frame"></iframe>
+
+<footer>
+  <p>&copy; 2025 Khadri Mart. All Rights Reserved.</p>
+</footer>
+
 </body>
 </html>

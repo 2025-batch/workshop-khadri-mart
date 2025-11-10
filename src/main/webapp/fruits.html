@@ -1,14 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>Fruits Form</title></head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fruits</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fffaf0;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      color: white;
+      background: linear-gradient(to right, #ff7f50, #ff6347);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #f0f0f0;
+      border-bottom: 2px solid #444;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      display: block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      background-color: #ddd;
+    }
+
+    /* Fruit overview grid */
+    .overview {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+
+    .fruit-card {
+      width: 180px;
+      border: 2px solid #444;
+      border-radius: 10px;
+      background: white;
+      text-align: center;
+      text-decoration: none;
+      color: black;
+      transition: 0.3s;
+    }
+
+    .fruit-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .fruit-card-title {
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    .fruit-card:hover {
+      transform: scale(1.05);
+    }
+
+    /* Fruit detail */
+    .fruit-detail {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .fruit-detail img {
+      width: 200px;
+      border-radius: 10px;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      display: inline-block;
+      width: 100px;
+      text-align: left;
+      margin-bottom: 10px;
+    }
+
+    input {
+      padding: 5px;
+      width: 200px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      background-color: #ff7043;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e65c28;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 16px;
+      background-color: #ff7043;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .back-link:hover {
+      background-color: #e65c28;
+    }
+
+    /* Show detail when targeted */
+    :target {
+      display: block;
+    }
+
+    /* Hide overview when any fruit is targeted */
+    body:has(:target) .overview {
+      display: none;
+    }
+  </style>
+</head>
 <body>
-  <h2>Fruits Form</h2>
-  <form>
-    <label>Fruit Name: </label>
-    <input type="text" name="fruitname"><br><br>
-    <label>Quantity (kg): </label>
-    <input type="number" name="quantity"><br><br>
-    <button type="submit">Submit</button>
-  </form>
+
+  <header>
+    <h1>Fresh Fruits</h1>
+    <p>Order your favorite fruits</p>
+  </header>
+
+
+  <!-- Fruit overview -->
+  <section class="overview">
+    <a class="fruit-card" href="#apple">
+      <img src="images/apple.jpg" alt="Apple">
+      <div class="fruit-card-title">Apple</div>
+    </a>
+
+    <a class="fruit-card" href="#banana">
+      <img src="images/banana.jpg" alt="Banana">
+      <div class="fruit-card-title">Banana</div>
+    </a>
+
+    <a class="fruit-card" href="#mango">
+      <img src="images/mango.jpg" alt="Mango">
+      <div class="fruit-card-title">Mango</div>
+    </a>
+  </section>
+
+  <!-- Apple detail -->
+  <section id="apple" class="fruit-detail">
+    <h2>Apple</h2>
+    <img src="images/apple.jpg" alt="Apple">
+    
+    <form>
+      <label>Fruit Name:</label>
+      <input type="text" name="fruitname" value="Apple" readonly><br>
+      
+      <label>Quantity (kg):</label>
+      <input type="number" name="quantity" placeholder="Enter quantity"><br>
+      
+      <button type="submit">Submit</button>
+    </form>
+
+   
+  </section>
+
+  <!-- Banana detail -->
+  <section id="banana" class="fruit-detail">
+    <h2>Banana</h2>
+    <img src="images/banana.jpg" alt="Banana">
+    
+    <form>
+      <label>Fruit Name:</label>
+      <input type="text" name="fruitname" value="Banana" readonly><br>
+      
+      <label>Quantity (kg):</label>
+      <input type="number" name="quantity" placeholder="Enter quantity"><br>
+      
+      <button type="submit">Submit</button>
+    </form>
+
+    
+  </section>
+
+  <!-- Mango detail -->
+  <section id="mango" class="fruit-detail">
+    <h2>Mango</h2>
+    <img src="images/mango.jpg" alt="Mango">
+    
+    <form>
+      <label>Fruit Name:</label>
+      <input type="text" name="fruitname" value="Mango" readonly><br>
+      
+      <label>Quantity (kg):</label>
+      <input type="number" name="quantity" placeholder="Enter quantity"><br>
+      
+      <button type="submit">Submit</button>
+    </form>
+
+    
+  </section>
+
 </body>
 </html>
