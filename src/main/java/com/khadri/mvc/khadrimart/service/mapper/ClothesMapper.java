@@ -1,14 +1,15 @@
 package com.khadri.mvc.khadrimart.service.mapper;
 
+import com.khadri.mvc.khadrimart.controller.form.ClothesForm;
 import com.khadri.mvc.khadrimart.service.dto.ClothesDto;
 
 public class ClothesMapper {
 
-    public ClothesDto mapDto(ClothesDto dto) {
-        ClothesDto mapped = new ClothesDto();
-        mapped.setClothName(dto.getClothName());
-        mapped.setQuantity(dto.getQuantity());
-        return mapped;
+    public ClothesDto map(ClothesForm form) {
+        ClothesDto dto = new ClothesDto();
+        dto.setClothName(form.getClothName());
+        dto.setQuantity(form.getQuantity());
+        dto.setUserName(form.getUserName());
+        return dto;
     }
 }
-

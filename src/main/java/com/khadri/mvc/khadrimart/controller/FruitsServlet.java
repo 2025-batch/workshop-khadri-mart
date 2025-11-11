@@ -14,37 +14,54 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class FruitsServlet extends HttpServlet {
-    private FruitsService service;
 
-    @Override
-    public void init() throws ServletException {
-        service = new FruitsService();
+	private FruitsService service;
 
-        ServletContext context = getServletContext();
-        String un = context.getInitParameter("username");
-        String pwd = context.getInitParameter("password");
-        String url = context.getInitParameter("url");
-        String driver = context.getInitParameter("driver");
+	public void init() throws ServletException {
+		service = new FruitsService();
 
-        DBConnection.createConnection(driver, url, un, pwd);
-    }
+		ServletContext context = getServletContext();
+		String driver = context.getInitParameter("driver");
+		String url = context.getInitParameter("url");
+		String username = context.getInitParameter("username");
+		String password = context.getInitParameter("password");
 
-    @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+		DBConnection.createConnection(driver, url, username, password);
+		if (DBConnection.getConnection() != null) {
+			System.out.println("Database connection successful!");
+		} else {
+			System.err.println("Database connection failed!");
+		}
+	}
 
-        PrintWriter pw = resp.getWriter();
-        String fruitname = req.getParameter("fruitname");
-        int quantity = Integer.parseInt(req.getParameter("quantity"));
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        FruitsForm form = new FruitsForm();
-        form.setFruitname(fruitname);
-        form.setQuantity(quantity);
+		resp.setContentType("text/html");
+		PrintWriter pw = resp.getWriter();
 
-        int result = service.saveFruit(form);
+		try {
+			String fruitname = req.getParameter("fruitname");
+			String qtyStr = req.getParameter("quantity");
 
-        if (result > 0) pw.println("Order placed successfully!");
-        else pw.println("Order failed!");
-    }
+			String userName = "Khadri";
+			double quantity = Double.parseDouble(qtyStr);
+
+			FruitsForm form = new FruitsForm();
+			form.setFruitname(fruitname);
+			form.setQuantity(quantity);
+			form.setUserName(userName);
+
+			int result = service.saveFruits(form);
+
+			if (result > 0) {
+				pw.println("Added Successfull");
+			} else {
+				pw.println("Invalid");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			pw.println("Error");
+		}
+	}
 }
-

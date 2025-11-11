@@ -1,0 +1,51 @@
+header {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  color: white;
+  background: linear-gradient(to right, #5f9ea0, #4682b4);
+}
+
+/* Flex container for layout */
+.header-container {
+  display: flex;
+  justify-content: center; /* centers the header-left content */
+  align-items: center;
+  position: relative;
+}
+
+/* Center content (store title & tagline) */
+.header-left {
+  text-align: center;
+}
+
+/* Right-side content (username + logout) */
+.header-right {
+  position: absolute;
+  right: 20px; /* keep it in the top-right corner */
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.username {
+  font-size: 16px;
+  color: #fff;
+}
+
+.logout-btn {
+  background-color: #ff6666;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #ff3333;
+}

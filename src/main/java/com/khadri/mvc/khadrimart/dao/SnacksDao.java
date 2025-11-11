@@ -5,25 +5,29 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import com.khadri.mvc.khadrimart.connection.DBConnection;
-import com.khadri.mvc.khadrimart.service.dto.SnacksDto;
+import com.khadri.mvc.khadrimart.controller.form.SnacksForm;
 
 public class SnacksDao {
 
-    public int insertSnack(SnacksDto dto) {
-        int count = 0;
-        String sql = "INSERT INTO snacks (snack_name, quantity) VALUES (?, ?)";
+	public int insertSnack(SnacksForm form) {
+		int count = 0;
+		Connection con = DBConnection.getConnection();
+		if (con == null) {
+			System.err.println("DB Connection is null!");
+			return 0;
+		}
 
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-            
-            ps.setString(1, dto.getSnackName());
-            ps.setDouble(2, dto.getQuantity());
-            
-            count = ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return count;
-    }
+		try (PreparedStatement ps = con
+				.prepareStatement("INSERT INTO public.snacks(snack_name, quantity, user_name) VALUES (?, ?, ?)")) {
+
+			ps.setString(1, form.getSnackName());
+			ps.setDouble(2, form.getQuantity());
+			ps.setString(3, form.getUserName());
+
+			count = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 }
-

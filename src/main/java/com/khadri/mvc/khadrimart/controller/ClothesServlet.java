@@ -3,44 +3,68 @@ package com.khadri.mvc.khadrimart.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import com.khadri.mvc.khadrimart.connection.DBConnection;
 import com.khadri.mvc.khadrimart.controller.form.ClothesForm;
 import com.khadri.mvc.khadrimart.form.mapper.ClothesFormMapper;
 import com.khadri.mvc.khadrimart.service.ClothesService;
-import com.khadri.mvc.khadrimart.service.dto.ClothesDto;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/clothes")
 public class ClothesServlet extends HttpServlet {
 
-    private ClothesService service = new ClothesService();
-    private ClothesFormMapper mapper = new ClothesFormMapper();
+	private ClothesService service;
+	private ClothesFormMapper mapper;
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+	public void init() throws ServletException {
+		service = new ClothesService();
+		mapper = new ClothesFormMapper();
 
-        String clothName = req.getParameter("clothname");
-        String quantity = req.getParameter("quantity");
+		ServletContext context = getServletContext();
+		String driver = context.getInitParameter("driver");
+		String url = context.getInitParameter("url");
+		String username = context.getInitParameter("username");
+		String password = context.getInitParameter("password");
 
-        ClothesForm form = new ClothesForm();
-        form.setClothName(clothName);
-        form.setQuantity(Integer.parseInt(quantity));
+		DBConnection.createConnection(driver, url, username, password);
+		if (DBConnection.getConnection() != null) {
+			System.out.println("Database connection successful!");
+		} else {
+			System.err.println("Database connection failed!");
+		}
+	}
 
-        ClothesDto dto = mapper.mapToDto(form);
-        int count = service.saveCloth(dto);
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        resp.setContentType("text/html");
-        PrintWriter out = resp.getWriter();
+		resp.setContentType("text/html");
+		PrintWriter pw = resp.getWriter();
 
-        if (count > 0) {
-            out.println("<h2>Cloth added successfully!</h2>");
-        } else {
-            out.println("<h2>Failed to add cloth!</h2>");
-        }
-    }
+		try {
+			String clothName = req.getParameter("clothname");
+			String quantityStr = req.getParameter("quantity");
+			String userName = "Khadri";
+
+			int quantity = Integer.parseInt(quantityStr);
+
+			ClothesForm form = new ClothesForm();
+			form.setClothName(clothName);
+			form.setQuantity(quantity);
+			form.setUserName(userName);
+
+			int result = service.saveCloth(form);
+
+			if (result > 0) {
+				pw.println("Success");
+			} else {
+				pw.println("Invalid");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			pw.println("Error occurred: " + e.getMessage());
+		}
+	}
 }

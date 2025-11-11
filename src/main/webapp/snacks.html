@@ -22,7 +22,6 @@
       margin-bottom: 20px;
     }
 
-    /* Grid for snacks */
     .overview {
       display: flex;
       justify-content: center;
@@ -58,7 +57,6 @@
       font-weight: bold;
     }
 
-    /* Snack detail */
     .snack-detail {
       display: none;
       padding: 40px 20px;
@@ -90,28 +88,10 @@
       margin-bottom: 15px;
     }
 
-    button, .back-link {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 8px 16px;
-      background: #ff9800;
-      color: white;
-      border-radius: 5px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    button:hover, .back-link:hover {
-      background-color: #e68900;
-    }
-
-    /* Show detail when targeted */
     :target {
       display: block;
     }
-
-    /* Hide overview when any snack is targeted */
+    
     body:has(:target) .overview {
       display: none;
     }
@@ -121,7 +101,6 @@
 
   <h1>Delicious Snacks</h1>
 
-  <!-- Snack overview cards -->
   <section class="overview">
     <a class="snack-card" href="#chips">
       <img src="images/chips.jpg" alt="Potato Chips">
@@ -139,58 +118,50 @@
     </a>
   </section>
 
-  <!-- Chips detail -->
   <section id="chips" class="snack-detail">
     <h2>Potato Chips</h2>
     <img src="images/potato.jpg" alt="Potato Chips">
     
-    <form>
-      <label>Snack Name:</label>
-      <input type="text" name="snackname" value="Potato Chips" readonly><br>
+    <form action="snacks" method="post">
+  <input type="text" name="snackname" value="Potato Chips" readonly>
+  <input type="number" name="quantity" placeholder="Enter quantity" required>
+  <input type="hidden" name="user" value="khadri">
+  <button type="submit">Add</button>
+</form>
 
-      <label>Quantity (kg):</label>
-      <input type="number" name="quantity" placeholder="Enter quantity" required><br>
 
-      <button type="submit">Submit</button>
-    </form>
-
-    <a href="index.html" class="back-link">← Back to Home</a>
   </section>
 
-  <!-- Samosa detail -->
   <section id="samosa" class="snack-detail">
     <h2>Samosa</h2>
     <img src="images/samosa.jpg" alt="Samosa">
     
-    <form>
+    <form action="snacks" method="post">
       <label>Snack Name:</label>
       <input type="text" name="snackname" value="Samosa" readonly><br>
 
       <label>Quantity (kg):</label>
       <input type="number" name="quantity" placeholder="Enter quantity" required><br>
-
-      <button type="submit">Submit</button>
+      <input type="hidden" name="user" value="khadri" >
+      <button type="submit">Add</button>
     </form>
-
-    <a href="index.html" class="back-link">← Back to Home</a>
+]
   </section>
 
-  <!-- Popcorn detail -->
   <section id="popcorn" class="snack-detail">
     <h2>Popcorn</h2>
     <img src="images/popcorn.jpg" alt="Popcorn">
     
-    <form>
+    <form action="snacks" method="post">
       <label>Snack Name:</label>
       <input type="text" name="snackname" value="Popcorn" readonly><br>
 
       <label>Quantity (kg):</label>
       <input type="number" name="quantity" placeholder="Enter quantity" required><br>
-
-      <button type="submit">Submit</button>
+      <input type="hidden" name="user" value="khadri" >
+      <button type="submit">Add</button>
     </form>
 
-    <a href="index.html" class="back-link">← Back to Home</a>
   </section>
 
 </body>

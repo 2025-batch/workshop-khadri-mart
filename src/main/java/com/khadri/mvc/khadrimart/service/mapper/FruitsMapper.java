@@ -8,6 +8,7 @@ public class FruitsMapper {
         FruitsDto dto = new FruitsDto();
         dto.setFruitname(form.getFruitname());
         dto.setQuantity(form.getQuantity());
+        dto.setUserName(form.getUserName());
         return dto;
     }
 }

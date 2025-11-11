@@ -3,45 +3,69 @@ package com.khadri.mvc.khadrimart.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import com.khadri.mvc.khadrimart.connection.DBConnection;
 import com.khadri.mvc.khadrimart.controller.form.SnacksForm;
-import com.khadri.mvc.khadrimart.form.mapper.SnacksFormMapper;
 import com.khadri.mvc.khadrimart.service.SnacksService;
-import com.khadri.mvc.khadrimart.service.dto.SnacksDto;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/snacks")
 public class SnacksServlet extends HttpServlet {
 
-    private SnacksService service = new SnacksService();
-    private SnacksFormMapper mapper = new SnacksFormMapper();
+    private SnacksService service;
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+    public void init() throws ServletException {
+        service = new SnacksService();
+
+        // Get DB parameters from web.xml
+        ServletContext context = getServletContext();
+        String driver = context.getInitParameter("driver");
+        String url = context.getInitParameter("url");
+        String username = context.getInitParameter("username");
+        String password = context.getInitParameter("password");
+
+        DBConnection.createConnection(driver, url, username, password);
+
+        if (DBConnection.getConnection() != null) {
+            System.out.println(" Database connectiond");
+        } else {
+            System.out.println("Database failed!");
+        }
+    }
+
+    protected void service(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        String snackName = req.getParameter("snackname");
-        String quantity = req.getParameter("quantity");
-
-        SnacksForm form = new SnacksForm();
-        form.setSnackName(snackName);
-        form.setQuantity(Double.parseDouble(quantity));
-
-        SnacksDto dto = mapper.mapToDto(form);
-
-        int count = service.saveSnack(dto);
-
         resp.setContentType("text/html");
-        PrintWriter out = resp.getWriter();
+        PrintWriter pw = resp.getWriter();
 
-        if (count > 0) {
-            out.println("<h2>Snack Added Successfully!</h2>");
-        } else {
-            out.println("<h2>Failed to Add Snack!</h2>");
+        try {
+            String snackName = req.getParameter("snackname");
+            String qtyStr = req.getParameter("quantity");
+
+            String userName = "Khadri";
+
+            double quantity = Double.parseDouble(qtyStr);
+
+            SnacksForm form = new SnacksForm();
+            form.setSnackName(snackName);
+            form.setQuantity(quantity);
+            form.setUserName(userName);
+
+            int result = service.saveSnack(form);
+
+            if (result > 0) {
+                pw.println("<h2>Snack Added Successfully!</h2>");
+            } else {
+                pw.println("<h2>Failed to Add Snack!</h2>");
+            }
+
+        } catch (Exception e) {
+            System.out.println("error Occured");
         }
     }
 }

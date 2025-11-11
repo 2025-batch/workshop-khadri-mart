@@ -19,46 +19,47 @@ public class VegetableServlet extends HttpServlet {
     private VegetableService service;
     private VegetableFormMapper mapper;
 
-    @Override
     public void init() throws ServletException {
         service = new VegetableService();
         mapper = new VegetableFormMapper();
-
+        
         ServletContext context = getServletContext();
-        String un = context.getInitParameter("username");
-        String pwd = context.getInitParameter("password");
-        String url = context.getInitParameter("url");
         String driver = context.getInitParameter("driver");
+        String url = context.getInitParameter("url");
+        String username = context.getInitParameter("username");
+        String password = context.getInitParameter("password");
 
-        DBConnection.createConnection(driver, url, un, pwd);
+        DBConnection.createConnection(driver, url, username, password);
+        if (DBConnection.getConnection() != null) {
+            System.out.println("Database connection successful!");
+        } else {
+            System.err.println("Database connection failed!");
+        }
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+    protected void service(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
-        System.out.println("VegetableServlet invoked");
 
         PrintWriter pw = resp.getWriter();
 
         try {
             String vegname = req.getParameter("vegname");
             String qtyStr = req.getParameter("quantity");
+            String userName = "Khadri";
 
             double quantity = Double.parseDouble(qtyStr);
 
-            VegetableForm form = mapper.map(vegname, quantity);
+            VegetableForm form = mapper.map(vegname, quantity, userName);
             int result = service.saveVegetable(form);
 
             if (result > 0) {
-                pw.println("Successfull");
+                pw.println("Success");
             } else {
                 pw.println("Invalid");
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
-            pw.println("error occured");
+            pw.println("Error occurred: " );
         }
     }
 }

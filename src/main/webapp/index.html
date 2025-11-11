@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Khadri Mart</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="header.css">
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -86,8 +87,16 @@
 <body>
 
 <header>
-  <h1>Khadri Mart</h1>
-  <p>Welcome to your fresh vegetable store!</p>
+  <div class="header-container">
+    <div class="header-left">
+      <h1>Khadri Mart</h1> 
+      <p>Welcome to your fresh vegetable store!</p>
+    </div>
+    <div class="header-right">
+      <span class="username">Hello, <strong>Khadri</strong></span>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </div>
 </header>
 
 <nav>

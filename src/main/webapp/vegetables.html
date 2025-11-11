@@ -20,7 +20,6 @@
       background: linear-gradient(to right, #4caf50, #388e3c);
     }
 
-    /* Vegetable overview grid */
     .overview {
       display: flex;
       justify-content: center;
@@ -56,7 +55,6 @@
       transform: scale(1.05);
     }
 
-    /* Vegetable detail */
     .veg-detail {
       display: none;
       text-align: center;
@@ -112,12 +110,10 @@
       background-color: #388e3c;
     }
 
-    /* Show detail when targeted */
     :target {
       display: block;
     }
 
-    /* Hide overview when any veg is targeted */
     body:has(:target) .overview {
       display: none;
     }
@@ -130,7 +126,6 @@
     <p>Order your favorite vegetables</p>
   </header>
 
-  <!-- Vegetable overview -->
   <section class="overview">
     <a class="veg-card" href="#tomato">
       <img src="images/tomato.jpg" alt="Tomato">
@@ -148,53 +143,51 @@
     </a>
   </section>
 
-  <!-- Tomato detail -->
   <section id="tomato" class="veg-detail">
     <h2>Tomato</h2>
     <img src="images/tomato.jpg" alt="Tomato">
     
-    <form action="vegetables" method="post">
+    <form action="vegetable" method="post">
       <label>Vegetable Name:</label>
       <input type="text" name="vegname" value="Tomato" readonly><br>
       
       <label>Quantity (kg):</label>
       <input type="number" name="quantity" placeholder="Enter quantity"><br>
-      
-      <button type="submit">Submit</button>
+       <input type="hidden" name="user" value="khadri">
+      <button type="submit">add</button>
     </form>
   </section>
 
-  <!-- Onion detail -->
   <section id="onion" class="veg-detail">
     <h2>Onion</h2>
     <img src="images/onion.jpg" alt="Onion">
     
-    <form action="vegetables" method="post">
+    <form action="vegetable" method="post">
       <label>Vegetable Name:</label>
       <input type="text" name="vegname" value="Onion" readonly><br>
       
       <label>Quantity (kg):</label>
       <input type="number" name="quantity" placeholder="Enter quantity"><br>
-      
-      <button type="submit">Submit</button>
+       <input type="hidden" name="user" value="khadri" >
+      <button type="submit">add</button>
     </form>
 
   </section>
-
-  <!-- Carrot detail -->
   <section id="carrot" class="veg-detail">
     <h2>Carrot</h2>
     <img src="images/carrot.jpg" alt="Carrot">
     
-    <form action="vegetables" method="post">
-      <label>Vegetable Name:</label>
-      <input type="text" name="vegname" value="Carrot" readonly><br>
-      
-      <label>Quantity (kg):</label>
-      <input type="number" name="quantity" placeholder="Enter quantity"><br>
-      
-      <button type="submit">Submit</button>
-    </form>
+    <form action="vegetable" method="post">
+  <label>Vegetable Name:</label>
+  <input type="text" name="vegname" value="Tomato" readonly><br>
+
+  <label>Quantity (kg):</label>
+  <input type="number" name="quantity" placeholder="Enter quantity"><br>
+
+  <input type="hidden" name="user_name" value="khadri">
+
+  <button type="submit">Add</button>
+</form>
 
   </section>
 

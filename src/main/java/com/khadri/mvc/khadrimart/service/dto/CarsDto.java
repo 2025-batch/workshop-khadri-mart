@@ -1,29 +1,40 @@
 package com.khadri.mvc.khadrimart.service.dto;
 
 public class CarsDto {
-    private String carName;
-    private int quantity;
-    private String color;
+	private String carName;
+	private int quantity;
+	private String color;
+	private String userName;
 
-    // Getters and Setters
-    public String getCarName() {
-        return carName;
-    }
-    public void setCarName(String carName) {
-        this.carName = carName;
-    }
+	public String getCarName() {
+		return carName;
+	}
 
-    public int getQuantity() {
-        return quantity;
-    }
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+	public void setCarName(String carName) {
+		this.carName = carName;
+	}
 
-    public String getColor() {
-        return color;
-    }
-    public void setColor(String color) {
-        this.color = color;
-    }
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 }

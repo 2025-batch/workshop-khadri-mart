@@ -4,124 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clothes</title>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #fff0f5;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      text-align: center;
-      padding: 20px;
-      color: white;
-      background: linear-gradient(to right, #ff69b4, #ff1493);
-    }
-
-    /* Clothes overview grid */
-    .overview {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-      flex-wrap: wrap;
-    }
-
-    .clothes-card {
-      width: 180px;
-      border: 2px solid #444;
-      border-radius: 10px;
-      background: white;
-      text-align: center;
-      text-decoration: none;
-      color: black;
-      transition: 0.3s;
-    }
-
-    .clothes-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 10px 10px 0 0;
-    }
-
-    .clothes-card-title {
-      padding: 10px;
-      font-weight: bold;
-    }
-
-    .clothes-card:hover {
-      transform: scale(1.05);
-    }
-
-    /* Clothes detail */
-    .clothes-detail {
-      display: none;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    .clothes-detail img {
-      width: 200px;
-      border-radius: 10px;
-    }
-
-    form {
-      margin-top: 20px;
-    }
-
-    label {
-      display: inline-block;
-      width: 100px;
-      text-align: left;
-      margin-bottom: 10px;
-    }
-
-    input {
-      padding: 5px;
-      width: 200px;
-      margin-bottom: 15px;
-    }
-
-    button {
-      background-color: #ff69b4;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #e0569c;
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 8px 16px;
-      background-color: #ff69b4;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-
-    .back-link:hover {
-      background-color: #e0569c;
-    }
-
-    /* Show detail when targeted */
-    :target {
-      display: block;
-    }
-
-    /* Hide overview when any clothes detail is targeted */
-    body:has(:target) .overview {
-      display: none;
-    }
-  </style>
 </head>
 <body>
 
@@ -153,14 +35,14 @@
     <h2>Shirt</h2>
     <img src="images/shirt.jpg" alt="Shirt">
     
-    <form>
+    <form method="post" action="clothes">
       <label>Clothes Name:</label>
       <input type="text" name="clothname" value="Shirt" readonly><br>
       
       <label>Quantity:</label>
       <input type="number" name="quantity" placeholder="Enter quantity"><br>
-      
-      <button type="submit">Submit</button>
+      <input type="hidden" name="user" value="khadri" >
+      <button type="submit">Add</button>
     </form>
   </section>
 
@@ -169,14 +51,14 @@
     <h2>Jeans</h2>
     <img src="images/jeans.jpg" alt="Jeans">
     
-    <form>
+    <form method="post" action="clothes">
       <label>Clothes Name:</label>
       <input type="text" name="clothname" value="Jeans" readonly><br>
       
       <label>Quantity:</label>
       <input type="number" name="quantity" placeholder="Enter quantity"><br>
-      
-      <button type="submit">Submit</button>
+      <input type="hidden" name="user" value="khadri" >
+      <button type="submit">Add</button>
     </form>
   </section>
 
@@ -185,14 +67,14 @@
     <h2>Jacket</h2>
     <img src="images/jacket.jpg" alt="Jacket">
     
-    <form>
+    <form method="post" action="clothes">
       <label>Clothes Name:</label>
       <input type="text" name="clothname" value="Jacket" readonly><br>
       
       <label>Quantity:</label>
       <input type="number" name="quantity" placeholder="Enter quantity"><br>
-      
-      <button type="submit">Submit</button>
+      <input type="hidden" name="user" value="khadri" >
+      <button type="submit">Add</button>
     </form>
   </section>
 

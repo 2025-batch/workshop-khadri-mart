@@ -4,8 +4,8 @@ public class CarsForm {
     private String carName;
     private int quantity;
     private String color;
+    private String userName;
 
-    // Getters and Setters
     public String getCarName() {
         return carName;
     }
@@ -26,5 +26,13 @@ public class CarsForm {
     public void setColor(String color) {
         this.color = color;
     }
+    public String getUserName() 
+    { 
+    	return userName; 
+    	}
+    public void setUserName(String userName) 
+    { 
+    	this.userName = userName; 
+    	}
 }
 
