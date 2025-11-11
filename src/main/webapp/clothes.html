@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothes</title>
+</head>
+<body>
+
+  <header>
+    <h1>Clothes Collection</h1>
+    <p>Browse and order your favorite clothes</p>
+  </header>
+
+  <!-- Clothes overview -->
+  <section class="overview">
+    <a class="clothes-card" href="#shirt">
+      <img src="images/shirt.jpg" alt="Shirt">
+      <div class="clothes-card-title">Shirt</div>
+    </a>
+
+    <a class="clothes-card" href="#jeans">
+      <img src="images/jeans.jpg" alt="Jeans">
+      <div class="clothes-card-title">Jeans</div>
+    </a>
+
+    <a class="clothes-card" href="#jacket">
+      <img src="images/jacket.jpg" alt="Jacket">
+      <div class="clothes-card-title">Jacket</div>
+    </a>
+  </section>
+
+  <!-- Shirt detail -->
+  <section id="shirt" class="clothes-detail">
+    <h2>Shirt</h2>
+    <img src="images/shirt.jpg" alt="Shirt">
+    
+    <form method="post" action="clothes">
+      <label>Clothes Name:</label>
+      <input type="text" name="clothname" value="Shirt" readonly><br>
+      
+      <label>Quantity:</label>
+      <input type="number" name="quantity" placeholder="Enter quantity"><br>
+      <input type="hidden" name="user" value="khadri" >
+      <button type="submit">Add</button>
+    </form>
+  </section>
+
+  <!-- Jeans detail -->
+  <section id="jeans" class="clothes-detail">
+    <h2>Jeans</h2>
+    <img src="images/jeans.jpg" alt="Jeans">
+    
+    <form method="post" action="clothes">
+      <label>Clothes Name:</label>
+      <input type="text" name="clothname" value="Jeans" readonly><br>
+      
+      <label>Quantity:</label>
+      <input type="number" name="quantity" placeholder="Enter quantity"><br>
+      <input type="hidden" name="user" value="khadri" >
+      <button type="submit">Add</button>
+    </form>
+  </section>
+
+  <!-- Jacket detail -->
+  <section id="jacket" class="clothes-detail">
+    <h2>Jacket</h2>
+    <img src="images/jacket.jpg" alt="Jacket">
+    
+    <form method="post" action="clothes">
+      <label>Clothes Name:</label>
+      <input type="text" name="clothname" value="Jacket" readonly><br>
+      
+      <label>Quantity:</label>
+      <input type="number" name="quantity" placeholder="Enter quantity"><br>
+      <input type="hidden" name="user" value="khadri" >
+      <button type="submit">Add</button>
+    </form>
+  </section>
+
+</body>
+</html>
