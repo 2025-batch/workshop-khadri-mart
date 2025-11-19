@@ -1,13 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="https://jakarta.ee/xml/ns/jakartaee"
-	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-	id="WebApp_ID" version="6.0">
-	<display-name>webapp1</display-name>
-	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-	</welcome-file-list>
+         xmlns="https://jakarta.ee/xml/ns/jakartaee"
+       xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
+       https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
 
+    <display-name>Khadri Mart</display-name>
+
+    <context-param>
+    <param-name>driver</param-name>
+    <param-value>org.postgresql.Driver</param-value>
+</context-param>
+
+<context-param>
+    <param-name>url</param-name>
+    <param-value>jdbc:postgresql://localhost:5432/postgres</param-value>
+</context-param>
+
+<context-param>
+    <param-name>username</param-name>
+    <param-value>postgres</param-value>
+</context-param>
+
+<context-param>
+    <param-name>password</param-name>
+    <param-value>postgres</param-value>
+</context-param>
+
+<servlet>
+    <servlet-name>vegetableServlet</servlet-name>
+    <servlet-class>com.khadri.mvc.khadrimart.controller.VegetableServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>vegetableServlet</servlet-name>
+    <url-pattern>/vegetable</url-pattern>
+</servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>fruitsServlet</servlet-name>
+        <servlet-class>com.khadri.mvc.khadrimart.controller.FruitsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>fruitsServlet</servlet-name>
+        <url-pattern>/fruits</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>snacksServlet</servlet-name>
+        <servlet-class>com.khadri.mvc.khadrimart.controller.SnacksServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>snacksServlet</servlet-name>
+        <url-pattern>/snacks</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>carsServlet</servlet-name>
+        <servlet-class>com.khadri.mvc.khadrimart.controller.CarsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>carsServlet</servlet-name>
+        <url-pattern>/cars</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>clothServlet</servlet-name>
+        <servlet-class>com.khadri.mvc.khadrimart.controller.ClothesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>clothServlet</servlet-name>
+        <url-pattern>/clothes</url-pattern>
+    </servlet-mapping>
+
+   <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+</welcome-file-list>
 
 
 </web-app>
