@@ -20,8 +20,6 @@ public class SnacksServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         service = new SnacksService();
-
-        // Get DB parameters from web.xml
         ServletContext context = getServletContext();
         String driver = context.getInitParameter("driver");
         String url = context.getInitParameter("url");
