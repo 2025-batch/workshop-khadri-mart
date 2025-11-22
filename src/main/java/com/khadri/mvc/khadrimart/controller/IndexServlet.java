@@ -1,9 +1,14 @@
 package com.khadri.mvc.khadrimart.controller;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class IndexServlet extends HttpServlet {
 
@@ -22,7 +27,6 @@ public class IndexServlet extends HttpServlet {
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
 
-        // Directly print your index.html content, only replacing the username
         out.println("<!DOCTYPE html>");
         out.println("<html lang='en'>");
         out.println("<head>");
@@ -56,47 +60,44 @@ public class IndexServlet extends HttpServlet {
         out.println("<p>Welcome to your fresh vegetable store!</p>");
         out.println("</div>");
         out.println("<div class='header-right'>");
-        // Replace static name with session username
         out.println("<span class='username'>Hello, <strong>" + username + "</strong></span>");
         out.println("<button class='logout-btn' onclick='logout()'>Logout</button>");
         out.println("</div></div>");
         out.println("</header>");
-
-        // Copy nav exactly as in your HTML
         out.println("<nav>");
+        
         out.println("<div class='dropdown'><a href='#'>VEGETABLES ▾</a><div class='dropdown-content'>");
         out.println("<a href='vegetables.html#tomato' target='content-frame'>Tomato</a>");
         out.println("<a href='vegetables.html#onion' target='content-frame'>Onion</a>");
         out.println("<a href='vegetables.html#carrot' target='content-frame'>Carrot</a>");
         out.println("</div></div>");
-
+        
         out.println("<div class='dropdown'><a href='#'>FRUITS ▾</a><div class='dropdown-content'>");
         out.println("<a href='fruits.html#apple' target='content-frame'>Apple</a>");
         out.println("<a href='fruits.html#banana' target='content-frame'>Banana</a>");
         out.println("<a href='fruits.html#mango' target='content-frame'>Mango</a>");
         out.println("</div></div>");
-
+        
         out.println("<div class='dropdown'><a href='#'>CARS ▾</a><div class='dropdown-content'>");
         out.println("<a href='cars.html#tesla' target='content-frame'>Tesla Model S</a>");
         out.println("<a href='cars.html#bmw' target='content-frame'>BMW X5</a>");
         out.println("<a href='cars.html#audi' target='content-frame'>Audi A6</a>");
         out.println("</div></div>");
-
+        
         out.println("<div class='dropdown'><a href='#'>SNACKS ▾</a><div class='dropdown-content'>");
         out.println("<a href='snacks.html#chips' target='content-frame'>Potato Chips</a>");
         out.println("<a href='snacks.html#samosa' target='content-frame'>Samosa</a>");
         out.println("<a href='snacks.html#popcorn' target='content-frame'>Popcorn</a>");
         out.println("</div></div>");
-
+        
         out.println("<div class='dropdown'><a href='#'>CLOTHES ▾</a><div class='dropdown-content'>");
         out.println("<a href='clothes.html#shirt' target='content-frame'>Shirt</a>");
         out.println("<a href='clothes.html#jeans' target='content-frame'>Jeans</a>");
         out.println("<a href='clothes.html#jacket' target='content-frame'>Jacket</a>");
         out.println("</div></div>");
-
+        
         out.println("<a href='contact.html' target='content-frame'>CONTACT</a>");
         out.println("</nav>");
-
         out.println("<iframe name='content-frame'></iframe>");
         out.println("<footer><p>&copy; 2025 Khadri Mart. All Rights Reserved.</p></footer>");
         out.println("</body></html>");
