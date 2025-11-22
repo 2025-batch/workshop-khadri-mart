@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 CREATE TABLE IF NOT EXISTS vegetables (
     id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     vegname VARCHAR(50) NOT NULL,
@@ -34,3 +35,6 @@ CREATE TABLE cars (
     user_name VARCHAR(100) NOT NULL
 );
 
+=======
+use schema 2025_batch;
+>>>>>>> 0092070a038c37648197e54c55733230ffc28c2d
