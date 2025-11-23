@@ -33,4 +33,3 @@ CREATE TABLE cars (
     color VARCHAR(50),
     user_name VARCHAR(100) NOT NULL
 );
-
